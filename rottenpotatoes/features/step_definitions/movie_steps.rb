@@ -17,8 +17,9 @@ end
 
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
-  #  page.body is the entire content of the page as a string.
-  fail 'Unimplemented'
+  #  page.body is the entire content of the page as a string
+  rxp = /^.*#{e1}.*#{e2}.*$/
+  expect page.body.match?(rxp)
 end
 
 Then /I should (not )?see movies with the following ratings: (.*)/ do |should, ratings_list|
